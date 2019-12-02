@@ -1,0 +1,82 @@
+package cloud.stadiumgoods.stage;
+
+import java.io.File;
+import java.io.FileInputStream;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class PositiveTests1 {
+
+	@Test
+	public void loginTest() throws Exception {
+		System.out.println("Starting Part 1 Test");
+
+//		Create driver
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+
+// 		Locate file location
+		File src = new File("C:\\Users\\Lirio\\eclipse-workspace\\Datafeed\\Authorization.xlsx");
+		System.out.println("Located datafeed");
+
+		FileInputStream fis = new FileInputStream(src);
+
+// 		Load total workbook
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+
+//		Locate sheet1
+		XSSFSheet sheet1 = wb.getSheetAt(0);
+
+//		Locate username1
+
+		String username1 = sheet1.getRow(1).getCell(0).getStringCellValue();
+
+		System.out.println("Data from Username1 is " + username1);
+		
+//		Locate Password1
+
+		String password1 = sheet1.getRow(1).getCell(1).getStringCellValue();
+
+		System.out.println("Data from Password1 is " + password1);
+		
+//		Locate username2
+
+		String username2 = sheet1.getRow(2).getCell(0).getStringCellValue();
+
+		System.out.println("Data from Username2 is " + username2);
+		
+//		Locate Password2
+
+		String password2 = sheet1.getRow(2).getCell(1).getStringCellValue();
+
+		System.out.println("Data from Password2 is " + password2);
+		
+//		Open authorization page for Username1
+		String url = "https://"+username1+":"+password1+"@https://stage.stadiumgoods.cloud/";
+		driver.get(url);
+		System.out.println("Page is opened.");
+		
+//		click login button
+		WebElement logInButton = driver.findElement(By.tagName("button"));
+		logInButton.click();
+		
+//		Open authorization page for Username2
+		String url = "https://"+username2+":"+password2+"@https://stage.stadiumgoods.cloud/";
+		driver.get(url);
+		System.out.println("Page is opened.");
+		
+//		click login button
+		WebElement logInButton = driver.findElement(By.tagName("button"));
+		logInButton.click();
+		
+		// Close browser
+		driver.quit();
+
+	}
+}
