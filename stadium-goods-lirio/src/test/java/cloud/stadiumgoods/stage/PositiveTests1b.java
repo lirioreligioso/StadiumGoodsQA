@@ -64,7 +64,7 @@ public class PositiveTests1b {
 
 		sortElm.click();
 
-		System.out.println("Results (A.3a):  Initial element is successfully clicked for dropdown menu: " + "\n"
+		System.out.println("Results (B.1):  Initial element is successfully clicked for dropdown menu: " + "\n"
 				+ sortElm.getText());
 		System.out.println("-----------------------------------------------------------------------");
 
@@ -84,7 +84,7 @@ public class PositiveTests1b {
 		lowTohigh.click();
 
 		System.out.println(
-				"Results (A.3b):  Dropdown is successfully clicked at final point: " + sortElm.getText() + ".");
+				"Results (B.2):  Dropdown is successfully clicked at final point: " + sortElm.getText() + ".");
 		System.out.println("-----------------------------------------------------------------------");
 
 		// Close browser
